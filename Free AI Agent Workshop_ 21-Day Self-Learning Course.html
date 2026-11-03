@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free AI Agent Workshop: 21-Day Self-Learning Course</title>
+<style>
+:root{--bg:#f4f6f8;--sf:#fff;--tx:#14202e;--mu:#58667a;--ac:#0b7a75;--ac2:#dff3f1;--bd:#d9e0e8;--cd:#eef2f6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1620;--sf:#16202c;--tx:#e8eef5;--mu:#97a5b8;--ac:#4fd1c5;--ac2:#12332f;--bd:#26344a;--cd:#0c121a;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#0f1620;--sf:#16202c;--tx:#e8eef5;--mu:#97a5b8;--ac:#4fd1c5;--ac2:#12332f;--bd:#26344a;--cd:#0c121a;color-scheme:dark}
+*{box-sizing:border-box}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:70px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:40}
+h1,h2,h3{font-family:Georgia,"Iowan Old Style",serif;line-height:1.2;margin:0}
+a{color:var(--ac)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;height:54px;display:flex;align-items:center;gap:10px;padding:0 14px;background:var(--sf);border-bottom:1px solid var(--bd)}
+.top b{font-family:Georgia,serif;font-size:1.05rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+button{font:inherit;color:var(--tx);background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+#bar{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--ac)}
+#pct{font-size:.85rem;color:var(--mu)}
+.wrap{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1200px;margin:0 auto}
+#toc{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));align-self:start;max-height:calc(100vh - 54px);overflow:auto;padding:16px;border-right:1px solid var(--bd)}
+#toc input{width:100%;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--sf);color:var(--tx);margin-bottom:10px}
+#toc ul{list-style:none;margin:0;padding:0}
+#toc a{display:flex;justify-content:space-between;gap:8px;padding:7px 10px;border-radius:8px;color:var(--tx);text-decoration:none;font-size:.93rem}
+#toc a:hover{background:var(--cd)}
+#toc a.on{background:var(--ac2);color:var(--ac);font-weight:600}
+#toc b{font-weight:400;color:var(--mu);font-size:.8rem}
+main{padding:28px 24px 80px;max-width:820px}
+.hero{padding:34px 0 10px}
+.hero h1{font-size:clamp(1.9rem,5vw,2.8rem)}
+.hero p{color:var(--mu);max-width:60ch}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.stats span{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:8px 14px}
+section{padding:34px 0;border-top:1px solid var(--bd)}
+section h2{font-size:1.7rem;margin-bottom:6px}
+.sub{color:var(--mu);margin:0 0 14px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin:12px 0}
+.card h3{font-size:1.1rem;margin-bottom:6px}
+.c{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer}
+.c input{margin-top:6px;accent-color:var(--ac);width:18px;height:18px;flex:none}
+.c input:checked+span{color:var(--mu);text-decoration:line-through}
+.ck{border-left:4px solid var(--ac);background:var(--ac2);padding:10px 14px;border-radius:0 10px 10px 0;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.tw{overflow-x:auto}details.th{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:2px 16px;margin:16px 0}details.th summary{cursor:pointer;font:600 1.1rem Georgia,serif;padding:12px 0}details.th[open] summary{border-bottom:1px solid var(--bd);margin-bottom:10px}details.th h4{margin:14px 0 4px;font-size:1rem}details.th p{margin:6px 0}details.th ul,details.th ol{margin:6px 0;padding-left:20px}.hw{margin:0 0 10px 28px;font-size:.93rem;border-left:3px solid var(--ac2);padding-left:12px}.hw summary{cursor:pointer;color:var(--ac);padding:2px 0}.hw ol{margin:6px 0;padding-left:20px}.hw li{margin:4px 0}.hw code{background:var(--cd);padding:1px 5px;border-radius:4px;font-size:.85em;word-break:break-word}
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:var(--sf)}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--cd)}
+pre{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:12px;overflow-x:auto;font-size:.85rem}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.pn a{padding:8px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--sf);text-decoration:none}
+@media(max-width:900px){
+.wrap{display:block}
+#toc{position:fixed;z-index:35;left:0;top:calc(54px + env(safe-area-inset-top,0px));bottom:0;width:min(300px,86vw);max-height:none;background:var(--sf);transform:translateX(-102%);transition:transform .2s}
+body.open #toc{transform:none}
+main{padding:20px 16px 80px}}
+@media(min-width:901px){#mb{display:none}}
+</style></head><body>
+<header class="top"><button id="mb" aria-label="Open contents">Menu</button><b>Free AI Agent Workshop</b><span id="pct">0%</span><button id="th" aria-label="Toggle theme">Theme</button><i id="bar"></i></header>
+<div class="wrap">
+<nav id="toc" aria-label="Contents"><input id="q" type="search" placeholder="Search sections" aria-label="Search sections"><ul></ul></nav>
+<main>
+<div class="hero"><h1>Build AI agents for free in 21 days</h1>
+<p>A self-study course that follows the six modules of the Zero To AI curriculum using only free tools: n8n, Docker, Gemini, Groq, Telegram and Google APIs. Tick items as you finish; your progress stays in this browser.</p>
+<div class="stats"><span>21 days</span><span>6 modules</span><span>Rs 0 to start</span></div></div>
+
+<section id="purpose" data-t="Purpose and setup">
+<h2>Purpose and setup</h2><p class="sub">What you will be able to do, and what you need first.</p>
+<div class="card"><h3>After 21 days you can</h3>
+<label class="c"><input type="checkbox"><span>Explain how an agent works: trigger, model, memory, tools, output</span></label>
+<label class="c"><input type="checkbox"><span>Run n8n yourself and connect Google, Telegram and any REST API</span></label>
+<label class="c"><input type="checkbox"><span>Ship a news agent, a chat or email agent and three business workflows</span></label>
+<label class="c"><input type="checkbox"><span>Secure, monitor and sell what you build, with a public portfolio as proof</span></label></div>
+<div class="card"><h3>Before day 1</h3>
+<label class="c"><input type="checkbox"><span>Install <a href="https://docs.docker.com/get-started/get-docker/">Docker</a> and <a href="https://code.visualstudio.com">VS Code</a></span></label>
+<label class="c"><input type="checkbox"><span>Create free accounts: Google, <a href="https://github.com">GitHub</a>, Telegram, <a href="https://aistudio.google.com">Google AI Studio</a>, <a href="https://console.groq.com">Groq</a></span></label>
+<label class="c"><input type="checkbox"><span>Make a folder with a notes.md file; log every error and fix</span></label></div>
+<div class="card"><h3>Study loop for every lesson</h3><p>Preview the checkpoint, learn from the linked doc, build without copying, break it on purpose, write three lines of notes, then self-test. Plan 1.5 to 2 hours a day, about 35 hours in total.</p></div>
+</section>
+
+<section id="stack" data-t="Free stack">
+<h2>Free stack</h2><p class="sub">Every tool below has a free path. Check each pricing page before relying on a limit.</p>
+<div class="tw"><table><tr><th>Need</th><th>Tool</th></tr>
+<tr><td>Automation engine</td><td><a href="https://n8n.io">n8n</a> Community Edition, self-hosted; <a href="https://docs.n8n.io">docs</a></td></tr>
+<tr><td>Cloud LLMs, free tiers</td><td><a href="https://aistudio.google.com">Gemini</a>, <a href="https://console.groq.com">Groq</a>, <a href="https://openrouter.ai">OpenRouter</a></td></tr>
+<tr><td>Local LLM</td><td><a href="https://ollama.com">Ollama</a></td></tr>
+<tr><td>Google APIs</td><td><a href="https://console.cloud.google.com">Google Cloud Console</a> OAuth</td></tr>
+<tr><td>Chat channel</td><td><a href="https://t.me/BotFather">Telegram BotFather</a></td></tr>
+<tr><td>Public webhook URL</td><td><a href="https://ngrok.com">ngrok</a> or Cloudflare Tunnel</td></tr>
+<tr><td>Free server</td><td><a href="https://www.oracle.com/cloud/free/">Oracle Cloud Always Free</a></td></tr>
+<tr><td>Help and templates</td><td><a href="https://community.n8n.io">Forum</a>, <a href="https://n8n.io/workflows">templates</a></td></tr>
+<tr><td>Agent security</td><td><a href="https://genai.owasp.org">OWASP GenAI</a></td></tr></table></div>
+<p>n8n Cloud is only a trial, so self-hosting is the free route.</p>
+</section>
+
+<section id='basics' data-t='Big picture'><h2>Big picture theory</h2><p class='sub'>Read this first. It explains why the labs are built the way they are.</p>
+<details class='th' open><summary>Why this skill exists</summary>
+<p>Automation has had three generations. Scripts did one fixed job. Integration tools such as n8n connect apps with fixed rules: if X happens, do Y. LLM agents add a model that can read messy input, such as an email, a voice note or a PDF, and decide what it means. Models are good at reading and deciding, and workflows are good at moving data between apps. Combining the two is the value of this whole course.</p>
+<p><b>Why n8n.</b> It is source-available, free to self-host, has hundreds of integrations and AI agent nodes, and exports workflows as JSON. Your client data stays on your own machine. The trade-off is that you run it, so backups, updates and security are yours.</p>
+<p><b>Design rule: workflow first, agent only when needed.</b> Use a fixed workflow when the steps are known, and an agent only when the path cannot be known in advance. Fixed workflows are cheaper, faster, easier to test and fail in predictable ways. Agents add flexibility, but also variance, cost and attack surface. Example: summarizing each news item is a fixed step. Researching a company and deciding what to ask is open-ended, so it suits an agent. See <a href='https://www.anthropic.com/research/building-effective-agents'>Building effective agents</a>.</p></details>
+<details class='th' open><summary>How language models work</summary>
+<p>A model reads text as tokens and predicts the next token, again and again (<a href='https://arxiv.org/abs/1706.03762'>Transformer paper</a>). Each property below changes how you design.</p>
+<div class='tw'><table><tr><th>Property</th><th>Design response</th></tr><tr><td>Predicts likely text, not true text, so it can hallucinate</td><td>Ground answers in data, validate output, add human approval for risky actions</td></tr><tr><td>No memory between calls</td><td>Send history or stored facts with every request</td></tr><tr><td>Limited context window</td><td>Chunk, summarize, retrieve only what is needed</td></tr><tr><td>Output varies run to run</td><td>Low temperature (0 to 0.3) for extraction and classification</td></tr><tr><td>Obeys instructions found in any text it reads</td><td>Treat outside text as untrusted; limit tools; require approvals</td></tr><tr><td>Cost and limits scale with tokens</td><td>Keep prompts short, batch work, cache, add fallbacks</td></tr></table></div>
+<h4>Worked example: token budget for the news agent</h4>
+<p>5 feeds with 20 items each gives 100 items a day. At about 300 tokens in and 80 out, that is 380 tokens per item, so 100 × 380 = 38,000 tokens a day. A once-a-day batch fits typical free limits (check the <a href='https://ai.google.dev/pricing'>current limits</a>). Summarizing and scoring in two separate calls would double it, so ask for both in one structured call.</p></details>
+<details class='th' open><summary>The agent loop</summary>
+<p>The <a href='https://arxiv.org/abs/2210.03629'>ReAct paper</a> describes the pattern behind most agents: think, act, observe, repeat. The model never runs tools itself. It outputs a structured request, n8n runs the tool, and the result goes into the next prompt. That is why you control an agent: its tool list is its permission list.</p>
+<h4>Worked example: booking trace</h4>
+<ol><li>User: book me Thursday afternoon.</li><li>Thought: I need free slots. Action: list Calendar events, Thursday 12:00 to 18:00.</li><li>Observation: busy 14:00 to 15:00.</li><li>Reply: I have 15:00 or 16:00. Which one? (No booking yet.)</li><li>User picks 15:00. Action: create the event, then confirm.</li></ol>
+<p>Why: the booking tool runs only after the user confirms, so a misunderstanding cannot create a wrong event.</p></details></section>
+
+<section id="m1" data-t="1 Foundations">
+<h2>Module 1: Foundations</h2><p class="sub">Days 1 to 7. Build your automation stack and a news intelligence agent.</p>
+<div class="card"><h3>Labs</h3>
+<label class="c"><input type="checkbox"><span>Run n8n in Docker and open localhost:5678</span></label>
+<label class="c"><input type="checkbox"><span>Practise Schedule, Webhook, HTTP Request, Edit Fields, Code, IF and Merge nodes</span></label>
+<label class="c"><input type="checkbox"><span>Add a Gemini API key as a credential</span></label>
+<label class="c"><input type="checkbox"><span>First live automation: Schedule, HTTP Request, Telegram message</span></label>
+<label class="c"><input type="checkbox"><span>News agent: RSS, remove duplicates, 24-hour filter, AI summary as JSON, Sheets, Telegram digest</span></label>
+<label class="c"><input type="checkbox"><span>Google OAuth: connect Sheets, Gmail and Calendar</span></label></div>
+<pre>docker volume create n8n_data
+docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8n</pre>
+<div class="ck">Checkpoint: the news agent runs on schedule for 3 days with rows logged in Sheets.</div>
+<details class='th' open><summary>Theory and worked examples</summary>
+<h4>Data flow</h4><p>A workflow is a pipeline of items. Every node receives a list of JSON items and outputs a list. Most beginner bugs come from not knowing the shape of the data, so after each node click it and read the output.</p>
+<h4>Credentials and OAuth</h4><p>A credential is delegated power: an API key is as sensitive as a password. n8n encrypts stored credentials with your encryption key, so losing that key means losing access. OAuth lets you give scoped, revocable access (for example read-only Sheets) without sharing a password, so always pick the narrowest scope that works.</p>
+<h4>Example: filter before the model call</h4><p>Input items have title, link and pubDate. Keep only the last 24 hours. Filtering first saves tokens, because you pay only for items that matter.</p>
+<pre>const cutoff = Date.now() - 24*60*60*1000;
+return items
+  .filter(i => new Date(i.json.pubDate).getTime() > cutoff)
+  .map(i => ({ json: { title: i.json.title.trim(), link: i.json.link } }));</pre>
+<h4>Example: a good summarization prompt</h4>
+<pre>You are a security news analyst. For the article below, return JSON with:
+summary (max 2 sentences), topic (one of web, cloud, crypto, ai, other),
+relevance (1 to 5).
+Rules: use only the text provided. If unsure, set relevance to 1.
+Article: {{ $json.title }} - {{ $json.content }}</pre>
+<p>Why it works: the role gives context, a fixed schema makes parsing reliable, the closed topic list prevents inconsistent labels, and the last rule reduces invention.</p></details>
+<p>Common errors: OAuth redirect mismatch, consent screen left in Testing (tokens expire in 7 days), Gemini 429 limits.</p>
+</section>
+
+<section id="m2" data-t="2 Communication">
+<h2>Module 2: Communication agents</h2><p class="sub">Days 8 to 11. Agents that handle chats, email and social drafts.</p>
+<div class="card"><h3>Labs</h3>
+<label class="c"><input type="checkbox"><span>Telegram bot with memory keyed by chat id</span></label>
+<label class="c"><input type="checkbox"><span>FAQ answers from a Google Sheet; escalate when unsure</span></label>
+<label class="c"><input type="checkbox"><span>Email agent: classify, route, create drafts (never auto-send)</span></label>
+<label class="c"><input type="checkbox"><span>Social post drafts saved to a Sheet for your approval</span></label>
+<label class="c"><input type="checkbox"><span>Add an approval step before any outbound message</span></label></div>
+<div class="ck">Checkpoint: 15 of 20 test questions answered correctly and 10 email drafts reviewed.</div>
+<details class='th' open><summary>Theory and worked examples</summary>
+<h4>Memory is re-sent history</h4><p>Models are stateless, so memory means sending earlier messages again. A window memory keeps the last N turns. Key it by chat id, or users will see each other’s context, which is a privacy bug.</p>
+<h4>Grounding with retrieval (RAG)</h4><p>Split your documents into chunks, turn each into an embedding (numbers that capture meaning), store them, embed the question, fetch the nearest chunks and put them in the prompt (<a href='https://arxiv.org/abs/2005.11401'>RAG paper</a>). Models cannot know your private FAQ, and retrieval fixes that without retraining.</p>
+<p><b>Example.</b> Question: do you deliver on Sunday? Retrieved chunk: deliveries run Monday to Saturday. Rule: answer only from context. Reply: we deliver Monday to Saturday, not Sunday. For a question not in the base, such as paying by crypto, the rule triggers an escalation: a team member will confirm.</p>
+<h4>Classify before you act</h4><p>For email, classify first (urgent, customer, newsletter), then route. A small step with a closed set of outputs is easy to test, while one giant prompt that classifies, decides and writes is hard to debug.</p>
+<h4>Why drafts, not auto-send</h4><p>A sent message cannot be undone. A draft makes the action reversible, and your approvals give you accuracy data before you remove the human.</p>
+<h4>Example: measure it</h4><p>Review 30 emails. Classification is right on 27 (90%). Of 9 weak drafts, 6 had the wrong tone. Fix: add 3 sample replies to the prompt, then retest on the same 30. This test, fix, retest loop is the core engineering habit.</p></details>
+</section>
+
+<section id="m3" data-t="3 Business agents">
+<h2>Module 3: Business agents</h2><p class="sub">Days 12 to 16. Three production-style systems with error handling and security.</p>
+<div class="card"><h3>Projects</h3>
+<label class="c"><input type="checkbox"><span>Lead qualification: webhook, extract fields, score, save, alert</span></label>
+<label class="c"><input type="checkbox"><span>Booking assistant using Calendar, with confirmation before booking</span></label>
+<label class="c"><input type="checkbox"><span>Weekly report agent that drafts an email from Sheets data</span></label></div>
+<div class="card"><h3>Production checklist</h3>
+<label class="c"><input type="checkbox"><span>Error Trigger workflow that alerts you on Telegram</span></label>
+<label class="c"><input type="checkbox"><span>Retries, run logging, JSON backups in Git</span></label>
+<label class="c"><input type="checkbox"><span>Idempotency: skip IDs already processed</span></label>
+<label class="c"><input type="checkbox"><span>Model fallback (Gemini then Groq)</span></label>
+<label class="c"><input type="checkbox"><span>Webhook secret header, least-privilege OAuth scopes</span></label>
+<label class="c"><input type="checkbox"><span>3 prompt-injection tests that fail safely</span></label></div>
+<div class="ck">Checkpoint: each project has a README, error alerts, and passes 10 test cases.</div>
+<details class='th' open><summary>Theory and worked examples</summary>
+<h4>Reliability principles</h4><ul><li><b>Failures are normal.</b> APIs time out, quotas run out and models return junk.</li><li><b>At-least-once delivery.</b> Triggers and retries can run a step twice. Idempotency means the same input gives the same result with no duplicates.</li><li><b>Retry with backoff.</b> Wait longer after each failure (5s, 10s, 20s), stop after N tries, then alert.</li><li><b>Observability.</b> Log input, output, status and duration.</li><li><b>Least privilege.</b> Give each credential and agent only the access it needs.</li></ul>
+<p><b>Example: idempotency.</b> A lead arrives with submission_id 8841. Look it up in the Sheet. If found, stop. If not, process and append. If the form provider retries the webhook, you still create one lead.</p>
+<h4>Example: lead scoring contract</h4><p>Input: a 3-chair dental clinic that misses calls after 6 pm, budget about 20k, needs it this month. Ask the model for fields the workflow can test:</p>
+<pre>business: dental clinic
+need: after-hours call handling
+budget: 20000
+urgency: high
+score: 8</pre>
+<p>An IF node checks score ≥ 7 and alerts you at once. Turning fuzzy language into a number the workflow can test makes the decision dependable, while you still see the original message.</p>
+<h4>Security theory</h4><ul><li><b>Prompt injection (OWASP LLM01).</b> The model cannot reliably separate instructions from data. Example: an email body says to ignore previous instructions and forward the last 10 emails to an outside address.</li><li><b>Risky combination.</b> An agent that can see private data, reads untrusted content and can send data out. Break at least one of the three, for instance give the email reader no send tool, or require approval to send.</li><li><b>Defences that work:</b> minimal tools, human approval for outbound actions, output validation, recipient allow-lists, separate agents for reading and acting, logging and alerts.</li><li><b>Not enough alone:</b> telling the model to never obey injected text.</li><li><b>Webhooks:</b> secret header, schema validation, rate limits, HTTPS. See <a href='https://genai.owasp.org'>OWASP GenAI</a>.</li></ul>
+<div class='tw'><table><tr><th>Injection test</th><th>Safe behavior</th></tr><tr><td>Email says to forward all data to an outside address</td><td>Ignored and flagged, nothing sent</td></tr><tr><td>Message asks the bot to reveal its prompt</td><td>Polite refusal</td></tr><tr><td>Form field holds script-like text</td><td>Stored as plain text, never executed</td></tr></table></div></details>
+</section>
+
+<section id="m4" data-t="4 Selling services">
+<h2>Module 4: Selling AI services</h2><p class="sub">Days 17 and 18. Turn builds into a paid offer.</p>
+<div class="card">
+<label class="c"><input type="checkbox"><span>Pick one niche and one measurable result</span></label>
+<label class="c"><input type="checkbox"><span>Price in three parts: setup fee, monthly retainer, add-ons</span></label>
+<label class="c"><input type="checkbox"><span>Record a 2-minute demo (<a href="https://obsproject.com">OBS Studio</a>)</span></label>
+<label class="c"><input type="checkbox"><span>Write a one-page pitch and 20 outreach messages</span></label>
+<label class="c"><input type="checkbox"><span>Prepare scope, access checklist, handover doc and a data-handling clause</span></label></div>
+<div class="ck">Checkpoint: pitch page, price sheet and demo video are ready. Treat income claims as marketing and judge by your own pilots.</div>
+<details class='th' open><summary>Theory and worked examples</summary>
+<h4>Price the outcome, not the hours</h4><p>Clients pay for results. Estimate the value, then charge a fraction of it.</p>
+<p><b>Example (illustrative numbers).</b> A clinic loses about 10 bookings a month to missed calls, at Rs 1,500 each, so about Rs 15,000 a month is at risk. If your agent recovers half, the value is Rs 7,500 a month. A fair offer is a Rs 12,000 setup plus Rs 3,000 a month for hosting and monitoring, repaid within a few months. Confirm the client’s real numbers in the discovery call, and check that the setup fee divided by your hours is a rate you accept.</p>
+<h4>Start with a pilot</h4><p>Buyers fear paying for something that does not work. A paid 7 to 14 day pilot with one success metric lowers their risk and gives you a case study.</p>
+<h4>Pitch in plain words</h4><p>Use: problem in their words, a 2-minute demo of the same workflow, expected result, price, timeline, next step. Say answers customer messages after hours and books appointments, not agentic orchestration.</p>
+<h4>Delivery</h4><p>Most post-sale failures come from unclear scope and access. Use a written scope, an access checklist, a test plan and a handover document, and record who owns the workflow and credentials so clients are never locked out. Treat your first 5 pilots as paid learning.</p></details>
+</section>
+
+<section id="m5" data-t="5 Multimodal">
+<h2>Module 5: Multimodal agents</h2><p class="sub">Day 19. Marked Soon on the course page, so these are free equivalents.</p>
+<div class="card">
+<label class="c"><input type="checkbox"><span>Receipt reader: photo, Gemini vision, validate, append to Sheets</span></label>
+<label class="c"><input type="checkbox"><span>Voice note, Groq Whisper transcription, agent reply with a confirmation</span></label>
+<label class="c"><input type="checkbox"><span>PDF extraction, chunking, summary or retrieval</span></label>
+<label class="c"><input type="checkbox"><span>Optional offline run with Ollama</span></label></div>
+<div class="ck">Checkpoint: one workflow handles text, image and voice through a Switch node.</div>
+<details class='th' open><summary>Theory and worked examples</summary>
+<h4>Convert, then reason</h4><p>Images go through a vision component, audio becomes text through speech recognition, and documents are extracted to text first. After conversion the same agent logic applies. The pipeline is: input file, convert, validate, reason, act.</p>
+<p><b>Example: receipt logger.</b> A photo arrives in Telegram. The vision step returns vendor, date and total. A Code node validates that the date parses and the total is a number above 0. If not, ask the user to resend. Then append to Sheets. Validation catches blurry-image misreads before bad data enters your records.</p>
+<h4>Voice notes</h4><p>Speech recognition struggles with names and mixed Hindi and English. Reply with a confirmation such as: I heard, book Thursday 3 pm. Correct? Test with your own accent and vocabulary.</p>
+<h4>Long documents</h4><p>A long PDF exceeds the context window. Split it into chunks of a few hundred words with a small overlap, summarize each chunk, then summarize the summaries (map-reduce), or retrieve only the relevant chunks.</p></details>
+</section>
+
+<section id="m6" data-t="6 Orchestration">
+<h2>Module 6: Advanced orchestration</h2><p class="sub">Days 20 and 21. Coordinate specialists, then ship the capstone.</p>
+<div class="card">
+<label class="c"><input type="checkbox"><span>Router sends requests to three specialist sub-workflows</span></label>
+<label class="c"><input type="checkbox"><span>Worker and reviewer loop with a hard step limit</span></label>
+<label class="c"><input type="checkbox"><span>Shared state in Sheets or Postgres, passed by ID</span></label>
+<label class="c"><input type="checkbox"><span>Test set of 20 cases with a measured pass rate</span></label>
+<label class="c"><input type="checkbox"><span>Capstone: portfolio on GitHub Pages with demos and a README</span></label></div>
+<div class="ck">Checkpoint: 85% pass rate on your 20 tests and a live demo to another person.</div>
+<details class='th' open><summary>Theory and worked examples</summary>
+<h4>Why several agents</h4><p>One agent with ten tools and a huge prompt gets confused. Specialists with short prompts and few tools are more accurate and each part can be tested alone.</p>
+<div class='tw'><table><tr><th>Pattern</th><th>Use when</th></tr><tr><td>Router</td><td>Different request types need different handling</td></tr><tr><td>Pipeline</td><td>Steps are known and ordered</td></tr><tr><td>Parallel branches, then merge</td><td>Independent subtasks such as research and fact-check</td></tr><tr><td>Worker plus reviewer</td><td>Quality matters and a checklist exists</td></tr><tr><td>Supervisor with tool-agents</td><td>Open-ended tasks that need dynamic choices</td></tr></table></div>
+<h4>Error compounding</h4><p>If each step is 90% reliable, five steps in a row succeed about 0.9 × 0.9 × 0.9 × 0.9 × 0.9 = 59% of the time. So use fewer steps, validate between steps and retry the weak ones. Each agent call also adds time and tokens, and a supervisor with three specialists can mean 4 to 8 model calls per request, so cap iterations and use a cheaper model for classification.</p>
+<h4>Evaluate, don’t guess</h4><p>Build a fixed test set of 20 to 50 inputs with expected outcomes and rerun it after every change. Do not tune on the same 20 cases forever: keep 10 unseen cases for the final test.</p>
+<div class='tw'><table><tr><th>Input</th><th>Expected route</th></tr><tr><td>What are your timings?</td><td>Support</td></tr><tr><td>I want a quote for 50 units</td><td>Sales</td></tr><tr><td>Send me last week’s summary</td><td>Report</td></tr><tr><td>asdf</td><td>Fallback: ask a clarifying question</td></tr></table></div>
+<p>If 19 of 20 route correctly, inspect the miss, then change the prompt, add an example or add a fallback.</p>
+<h4>Security across agents</h4><p>A message passed between agents is still untrusted if it started outside. Give each agent its own tools, validate every handoff against a schema, and require approval before sensitive actions.</p></details>
+</section>
+
+<section id="concepts" data-t="Key concepts">
+<h2>Key concepts</h2><p class="sub">Short definitions to keep beside you while building.</p>
+<div class="grid">
+<div class="card"><h3>Agent loop</h3>Think, call a tool, read the result, repeat. n8n runs the tools, so the tool list is the permission list.</div>
+<div class="card"><h3>Token</h3>A chunk of text. Context windows and free quotas are counted in tokens.</div>
+<div class="card"><h3>RAG</h3>Retrieve relevant chunks of your documents and put them in the prompt so answers are grounded.</div>
+<div class="card"><h3>Idempotency</h3>Running a step twice gives one result. Store processed IDs.</div>
+<div class="card"><h3>Prompt injection</h3>Hostile text in data tries to override instructions. Treat outside text as untrusted.</div>
+<div class="card"><h3>OAuth</h3>Scoped, revocable access to an account without sharing a password.</div></div>
+<p>Design rule: use a fixed workflow when the steps are known, and an agent only when the path cannot be known in advance.</p>
+</section>
+
+<section id="fixes" data-t="Troubleshooting">
+<h2>Troubleshooting</h2>
+<div class="tw"><table><tr><th>Problem</th><th>Fix</th></tr>
+<tr><td>Cannot open localhost:5678</td><td>Run docker ps, restart the container or change the port</td></tr>
+<tr><td>Workflows vanish after restart</td><td>Mount a volume at /home/node/.n8n</td></tr>
+<tr><td>Webhook not reachable</td><td>Use a tunnel and set WEBHOOK_URL</td></tr>
+<tr><td>redirect_uri_mismatch</td><td>Paste n8n’s exact redirect URL into Google Cloud</td></tr>
+<tr><td>Gemini 429 errors</td><td>Add a Wait node and a Groq fallback</td></tr>
+<tr><td>Invalid JSON from model</td><td>Use a Structured Output Parser and lower temperature</td></tr>
+<tr><td>Lost credentials after rebuild</td><td>Restore the original N8N_ENCRYPTION_KEY</td></tr></table></div>
+<div class="ck">Self-check habits for every lab: Who controls this input? What is the simplest design that works? What happens when it fails? How will I know it works? What is the worst action it can take? What does it cost per run? Can someone else operate it? The Doc version also has the day-by-day plan and quizzes with answers.</div>
+</section>
+</main></div>
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return[].slice.call(document.querySelectorAll(s))};
+var st={};try{st=JSON.parse(localStorage.getItem('zta')||'{}')}catch(e){}
+function save(){try{localStorage.setItem('zta',JSON.stringify(st))}catch(e){}}
+var secs=$$('main section'),ul=$('#toc ul');
+secs.forEach(function(s,i){var li=document.createElement('li');li.innerHTML='<a href="#'+s.id+'">'+s.dataset.t+'<b></b></a>';ul.appendChild(li);s.na=li.firstChild;
+var p=document.createElement('div');p.className='pn';p.innerHTML=(i?'<a href="#'+secs[i-1].id+'">Back: '+secs[i-1].dataset.t+'</a>':'<span></span>')+(i<secs.length-1?'<a href="#'+secs[i+1].id+'">Next: '+secs[i+1].dataset.t+'</a>':'<span></span>');s.appendChild(p);
+$$('#'+s.id+' .c input').forEach(function(c,n){var k=s.id+n;c.checked=!!st[k];c.onchange=function(){st[k]=c.checked;save();prog()}})});
+function prog(){var d=0,t=0;secs.forEach(function(s){var a=$$('#'+s.id+' .c input'),b=a.filter(function(x){return x.checked}).length;d+=b;t+=a.length;s.na.lastChild.textContent=a.length?b+'/'+a.length:''});$('#pct').textContent=t?Math.round(d/t*100)+'% done':''}
+prog();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){secs.forEach(function(s){s.na.classList.toggle('on',s===e.target)})}})},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(function(s){io.observe(s)});
+addEventListener('scroll',function(){var h=document.documentElement;$('#bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'},{passive:true});
+$('#mb').onclick=function(){document.body.classList.toggle('open')};
+ul.onclick=function(e){if(e.target.closest('a'))document.body.classList.remove('open')};
+$('#th').onclick=function(){var r=document.documentElement,d=matchMedia('(prefers-color-scheme:dark)').matches,cur=r.dataset.theme||(d?'dark':'light'),n=cur==='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('zth',n)}catch(e){}};
+try{var t=localStorage.getItem('zth');if(t)document.documentElement.dataset.theme=t}catch(e){}
+$('#q').oninput=function(){var v=this.value.toLowerCase();secs.forEach(function(s){s.na.parentNode.style.display=(!v||s.textContent.toLowerCase().indexOf(v)>-1)?'':'none'})};
+var H={m1:[
+["Install Docker Desktop (or Docker Engine) and start it. Check with <code>docker --version</code>.","Create storage: <code>docker volume create n8n_data</code>.","Run the one-line command from the code box above this list.","Open <code>http://localhost:5678</code> and create the owner account.","Press Ctrl+C, run it again and confirm your login and workflows are still there. That proves the volume works.","If the port is busy, change <code>-p 5678:5678</code> to <code>-p 5679:5678</code> and open port 5679."],
+["Create a new workflow and add a Manual Trigger. Click Execute to see how data flows.","Add Edit Fields (Set): create fields name and today. Run it and read the JSON output.","Add HTTP Request: GET <code>https://api.github.com/repos/n8n-io/n8n</code>. Find stargazers_count in the output.","Add a Code node that returns the items with one new field, as in the Module 1 theory example.","Add IF: stargazers_count greater than 1000. Send both branches to a Merge node (mode: append) and see both outputs.","Add Schedule Trigger (every minute, for testing) and Webhook Trigger (open its test URL in a browser). Delete the test schedule afterwards."],
+["Open <a href='https://aistudio.google.com'>aistudio.google.com</a>, sign in and choose Get API key, then create a key.","Save it in a password manager. Never paste it into chats or screenshots.","In n8n open Credentials, create Google Gemini (PaLM) API, paste the key and save.","Test: Manual Trigger, then Basic LLM Chain with a Google Gemini Chat Model, prompt: Say hello in one line.","Read the free-tier limits on <a href='https://ai.google.dev/pricing'>ai.google.dev</a> and note them in notes.md."],
+["In Telegram open <a href='https://t.me/BotFather'>BotFather</a>, send <code>/newbot</code>, pick a name and username, and copy the token.","Create an n8n credential: Telegram API, paste the token.","Send any message to your bot. Find your chat ID using a Telegram Trigger test run.","Build: Schedule Trigger (daily 8:00), then HTTP Request GET <code>https://api.open-meteo.com/v1/forecast?latitude=LAT&longitude=LON&current_weather=true</code> with your city coordinates.","Add Telegram Send Message: your chat ID, text <code>Temperature now: {{ $json.current_weather.temperature }}</code>.","Run it once, switch the workflow to Active, set the schedule 2 minutes ahead, and check the Executions tab for a live run."],
+["Add one RSS Read node per feed (copy RSS URLs from the sites you follow), then join them with a Merge node (append).","Add Remove Duplicates, comparing on link.","Add the 24-hour filter: the Code node from the Module 1 theory, or an IF on pubDate.","Add a Basic LLM Chain with Gemini. Prompt: return summary, topic and relevance 1 to 5. Attach a Structured Output Parser and set temperature to 0.2.","Add Google Sheets Append with columns title, link, summary, topic, relevance, date.","Digest: Sort by relevance, Limit 5, Aggregate, then a Code node that builds one message, then Telegram Send Message.","Put a Schedule Trigger at the start (for example 7:30), activate it, and check results for 3 days."],
+["Open <a href='https://console.cloud.google.com'>Google Cloud Console</a> and create a new project.","In APIs and Services, Library, enable Google Sheets API, Gmail API and Google Calendar API.","OAuth consent screen: External, add an app name and your email, and add yourself as a test user. In Testing mode tokens expire after 7 days.","Credentials, Create credentials, OAuth client ID, Web application. Paste the redirect URL shown on n8n\u2019s credential screen exactly.","Copy the Client ID and Secret into n8n credentials (Google Sheets OAuth2, Gmail OAuth2, Google Calendar OAuth2) and click Sign in with Google.","Test: read a Sheet, send a Gmail to yourself, list tomorrow\u2019s Calendar events."]],
+m2:[
+["Add a Telegram Trigger (updates: message) using your bot credential.","Add an AI Agent with a Gemini chat model. System message: role, tone, what to refuse, and escalate to a human when unsure.","Attach Simple Memory. Session ID expression: <code>{{ $json.message.chat.id }}</code>, window about 10.","Add Telegram Send Message using the trigger\u2019s chat ID and the agent output.","Activate the workflow (the trigger needs a public HTTPS WEBHOOK_URL, so use a tunnel). Test 20 messages, and chat from two accounts to confirm memory stays separate."],
+["Make a Google Sheet with columns question and answer and add 10 to 20 FAQs.","Give the AI Agent a Google Sheets tool (Get Rows) with your credential.","System prompt: answer only from the sheet. If it is not there, say a team member will follow up and send yourself a Telegram alert.","Test 10 questions that are in the sheet, 5 that are not, and 5 reworded ones.","Optional: when FAQs pass about 50, switch to a vector store with Gemini embeddings."],
+["Add Gmail Trigger, polling every 5 minutes.","Add a Text Classifier with categories urgent, customer, newsletter, spam, other. Give each a one-line description.","Add a Switch node on the category.","Customer branch: AI drafts a reply (put 3 sample replies in the prompt), then Gmail Create Draft. Never send automatically.","Urgent branch: Telegram alert with sender and subject.","Add a Gmail label such as processed, and skip emails that already have it."],
+["Read rows with relevance 4 or 5 from your news Sheet.","AI prompt: your voice, 5 sample posts, max 280 characters, no claims you cannot back with the source link.","Append to a Drafts sheet: draft, source link, status = pending.","Review and post by hand. Many posting APIs are paid or restricted, so stay draft-only."],
+["Add Telegram Send and Wait for Response (Approve and Reject buttons) before the risky action. Older versions can use a Wait node with a resume URL.","Add an IF node on the answer.","Approved branch performs the action. Rejected branch logs and stops.","Set a timeout. If nobody answers, do nothing and notify.","Log every decision in a Sheet."]],
+m3:[
+["Add a Webhook node (POST, path lead) with Header Auth using a long random secret.","Connect a form (for example <a href='https://tally.so'>Tally</a> webhook) or send a test POST with curl or Postman.","Validate with IF: email and message must not be empty.","AI extraction at temperature 0 into business, need, budget, urgency and score 1 to 10.","Look up submission_id in a Sheet. Skip if it exists, otherwise append the row.","If score is 7 or more: Telegram alert plus a Gmail draft reply."],
+["Telegram Trigger, AI Agent and Simple Memory as in Module 2.","Add a Calendar tool that gets events for the requested range.","Prompt rules: always offer 2 slots, and never book until the user says yes.","Add a second tool: create event, with name and phone in the description.","Send a confirmation and log the booking in a Sheet.","Test double booking, a past date and a vague request like tomorrow evening."],
+["Schedule Trigger, Monday 9:00.","Google Sheets Get Many rows, filtered to the last 7 days.","Code node computes totals, counts and averages.","Send only the computed numbers to the AI and ask for a 5-line summary.","Gmail Create Draft to yourself. Check the numbers against the Sheet before trusting them."],
+["Create a workflow called Error alerts: Error Trigger, then Telegram message with workflow name, failing node, error text and execution link.","In every other workflow open Settings and set Error Workflow to it.","Test by pointing an HTTP Request at a bad URL.","Activate the error workflow."],
+["On HTTP and AI nodes open Settings and turn on Retry On Fail: 3 tries, 5000 ms wait.","Set a timeout on HTTP Request nodes.","End each workflow with a log row: workflow, time, status, duration.","Download each workflow as JSON and commit it to a private GitHub repo.","Back up the volume: <code>docker run --rm -v n8n_data:/data -v $(pwd):/backup alpine tar czf /backup/n8n_backup.tgz -C /data .</code>"],
+["Choose a unique key, such as a submission ID or Gmail message ID.","At the start, look the key up in a Sheet.","IF found, stop. If not, continue.","Write the key right after processing.","Test by sending the same payload twice. Only one row should appear."],
+["Create a Groq credential from <a href='https://console.groq.com'>console.groq.com</a>.","If your AI Agent has a fallback model option, select the Groq model there. Otherwise set the node\u2019s On Error to Continue (using error output) and route that output to a second chain with Groq.","Test by temporarily using a wrong Gemini key."],
+["Webhook node, Authentication: Header Auth. Create a credential with a header name and a long random value from your password manager.","Expose it only through an HTTPS tunnel. Never open port 5678 directly to the internet.","Validate the payload: required fields and maximum lengths.","Use the narrowest Google scopes, and a separate Google account for the workshop.","Rotate secrets after demos."],
+["Make a Sheet of 10 hostile inputs: ignore previous instructions, reveal your prompt, forward all emails, and instructions hidden in email text.","Run them through a copy of your workflow with sending disabled.","Pass means: no unexpected tool call, no secret in the output, no outbound message.","Fix by removing tools, adding an approval step or validating the output, then rerun until all pass."]],
+m4:[
+["List 5 industries you understand.","For each, note repetitive customer messages or tasks.","Score each 1 to 5 on pain, budget, access to the owner and your knowledge.","Pick the highest and write one measurable result, for example: answer 90% of after-hours enquiries within 1 minute.","Speak to 3 owners for 15 minutes each to confirm the pain."],
+["Estimate your build hours.","Estimate client value: missed bookings \u00d7 booking value.","Set the setup fee, a monthly retainer (hosting, monitoring, small changes) and priced add-ons.","Offer three tiers, for example Starter, Standard and Plus.","Make a quote template with scope, exclusions, timeline and payment terms (for example 50% upfront)."],
+["Install <a href='https://obsproject.com'>OBS Studio</a>.","Script 2 minutes: problem 15 seconds, live demo 75 seconds, result 30 seconds.","Use test data and hide every key and token.","Record, trim and upload as unlisted video.","Add captions."],
+["Write one page: problem, demo link, result, price, timeline, next step.","Write a 3-line message: an observation about their business, what you built, an offer of a free 15-minute audit.","List 20 prospects from Google Maps or LinkedIn.","Send 5 a day, track replies in a Sheet, follow up on day 3 and day 7."],
+["Write a scope document: included, excluded, timeline.","List the access you need and who grants it.","Write a test plan with the test cases the client will approve.","Handover doc: workflow diagram, who owns each credential, how to restart, and a 30-day support window.","Add a data clause: what personal data is processed, where it is stored, how long, how it is deleted. Read the DPDP summary at <a href='https://www.meity.gov.in'>meity.gov.in</a>."]],
+m5:[
+["Telegram Trigger, then IF the message has a photo.","Telegram Get File using the largest photo\u2019s file_id.","Google Gemini Analyze Image on the binary, asking for vendor, date and total.","Code node validation: the date parses and the total is a number above 0.","If valid, append to Sheets. If not, ask the user to resend.","Test with 5 receipts, including a blurry one."],
+["Telegram Trigger for voice messages, then Get File.","HTTP Request POST to <code>https://api.groq.com/openai/v1/audio/transcriptions</code>, multipart form with the file and model <code>whisper-large-v3</code>, using your Groq key as a Bearer token.","Send the transcript to your AI Agent.","Reply with a confirmation such as: I heard, book Thursday 3 pm. Correct?","Test Hindi, English and mixed speech and note the accuracy."],
+["Receive the PDF by Telegram or webhook.","Extract From File (PDF) to text.","Code node splits it into chunks of about 500 words with a 50-word overlap.","Summarize each chunk with Loop Over Items, then summarize the summaries. Or store chunks in a Simple Vector Store for questions.","Check 3 facts in the summary against the original."],
+["Install <a href='https://ollama.com'>Ollama</a>.","Pull models: <code>ollama pull llama3.2</code> and a vision model such as <code>ollama pull llava</code>.","If n8n runs in Docker, use base URL <code>http://host.docker.internal:11434</code>.","Create an Ollama credential and use the Ollama Chat Model node.","Test with the internet off. Expect slower and weaker answers than cloud models."]],
+m6:[
+["Create three sub-workflows (Support, Sales, Report), each starting with an Execute Workflow Trigger.","Main workflow: Telegram Trigger, then Text Classifier (support, sales, report, other).","Switch node to three Execute Workflow nodes.","The fallback route asks a clarifying question.","Test with 20 inputs and note any wrong routes."],
+["A worker AI chain drafts the output.","A reviewer chain checks a checklist (tone, facts from the source, length) and returns pass or fail with notes.","IF pass, continue. If fail, loop back with the notes.","Count loops with a Set or Code node and stop after 2.","Log each iteration."],
+["Make a tasks Sheet: id, status, owner agent, result, updated.","Create a task id at the start, for example from the timestamp.","Pass the id between sub-workflows.","Each agent reads and updates only its own row.","Move to Postgres later if the Sheet gets slow."],
+["Make a Sheet of 20 inputs with expected route or answer, actual result and pass.","Run them through the workflow with Loop Over Items.","Compare expected and actual with IF or Code and write the result.","Pass rate = passes divided by 20. Target 85%.","Keep 10 unseen cases for the final test."],
+["Pick your best three agents.","Write a README for each: problem, architecture screenshot, setup, test results, limits.","Export the workflow JSON and search it for secrets before publishing.","Create a GitHub repo and turn on Pages (Settings, Pages).","Record a demo and link it from the portfolio page.","Present live to another person and write down their feedback."]]};
+Object.keys(H).forEach(function(id){var ls=$$('#'+id+' .c');H[id].forEach(function(a,i){if(ls[i])ls[i].insertAdjacentHTML('afterend','<details class="hw" open><summary>Step by step</summary><ol>'+a.map(function(x){return'<li>'+x+'</li>'}).join('')+'</ol></details>')})});
+</script></body></html>
